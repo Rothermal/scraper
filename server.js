@@ -1,7 +1,7 @@
 var request = require('request');
 var cheerio = require('cheerio');
 var areaCode = 55316;
-var url = "http://www.wunderground.com/cgi-bin/findweather/getForecast?&query=" + 55316;
+var url = "http://www.wunderground.com/cgi-bin/findweather/getForecast?&query=" + areaCode;
 
 
 request(url,function(error, response, body){
