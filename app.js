@@ -1,16 +1,18 @@
 var express = require ("express");
 var fs = require("fs");
+var needle = require('needle');
 var request = require('request');
 var cheerio = require('cheerio');
 var app = express();
 var port = 3000;
 
 app.get('/scrape',function(req,res){
-
-    url = "http://www.imdb.com/title/tt1229340/";
-    request(url,function(error,response,html){
+console.log('hit route');
+   var url = "http://www.imdb.com/title/tt1229340/";
+    needle.get( url,function(error,response){
         if(!error){
-            var $ = cheerio.load(html);
+            var $ = cheerio.load(response.body);
+            console.log(cheerio.load(response.body));
             var title;
             var release;
             var rating;
