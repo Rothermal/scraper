@@ -11,14 +11,14 @@ console.log('hit route');
    var url = "http://www.imdb.com/title/tt1229340/";
     needle.get( url,function(error,response){
         if(!error){
-            var $ = cheerio.load(response.body);
+            var $el = cheerio.load(response.body);
             console.log(cheerio.load(response.body));
             var title;
             var release;
             var rating;
-            var json ={title:"",release:"",rating:""};
+            var json ={title:"why",release:"dont",rating:"you work!"};
 
-            $('.header').filter(function(){
+            $el('.header').filter(function(){
                 var data = $(this);
                 console.log('data',data);
                  title = data.children().first().text();
@@ -26,8 +26,9 @@ console.log('hit route');
                 json.title = title;
                 json.release = release;
             });
-            $('.star-box-giga-star').filter(function(){
+            $el('.star-box-giga-star').filter(function(){
                 var data = $(this);
+                console.log("hello");
                   rating = data.text();
                 json.rating = rating;
             });
